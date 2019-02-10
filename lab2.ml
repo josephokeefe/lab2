@@ -77,7 +77,8 @@ understanding how the testing function works and why these tests are
 comprehensive. You may want to add some tests for other functions in
 the lab to get some practice with automated unit testing.
 ......................................................................*)
-(*
+
+
 let rec square_all (lst : int list) : int list =
   match lst with
   | [] -> []
@@ -85,7 +86,9 @@ let rec square_all (lst : int list) : int list =
 
 let exercise2 =
   square_all [3; 4; 5] ;;
-*)
+
+
+
 (*......................................................................
 Exercise 3: Define a recursive function that sums an integer
 list. (What's a sensible return value for the empty list?)
