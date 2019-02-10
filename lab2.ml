@@ -222,15 +222,15 @@ Exercise 7: Reimplement sum using fold_left, naming it sum_ho (for
 "higher order").
 ......................................................................*)
 
-let sum_ho (lst : int list) : int =
-  failwith "sum_ho not implemented" ;;
+let sum_ho : int list -> int =
+  List.fold_left (+) 0 ;;
 
 (*......................................................................
 Exercise 8: Reimplement prods using map.
 ......................................................................*)
 
-let prods_ho (lst : (int * int) list) : int list =
-  failwith "prods_ho not implemented" ;;
+let prods_ho : (int * int) list -> int list =
+  List.map (fun (x, y) -> x * y) ;;
 
 (*......................................................................
 Exercise 9: The OCaml List module provides -- in addition to the map,
@@ -243,8 +243,8 @@ https://caml.inria.fr/pub/docs/manual-ocaml/libref/List.html.) Use
 map2 to reimplement zip.
 ......................................................................*)
 
-let zip_ho (x : int list) (y : int list) : (int * int) list =
-  failwith "sum_ho not implemented" ;;
+let zip_ho : int list -> int list -> (int * int) list =
+  List.map2 (fun first second -> (first, second)) ;;
 
 (*......................................................................
 Exercise 10: Define a function evens, using these higher-order
