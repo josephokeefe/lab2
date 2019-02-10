@@ -80,10 +80,11 @@ the lab to get some practice with automated unit testing.
 
 let rec square_all (lst : int list) : int list =
   match lst with
-  [] -> []
-  first :: last -> (first * first) :: ( square_all last) ;;
+  | [] -> []
+  | head :: tail -> (head * head) :: (square_all tail) ;;
 
-let exercise2 = square_all [3; 4; 5] ;;
+let exercise2 =
+  square_all [3; 4; 5] ;;
 
 (*......................................................................
 Exercise 3: Define a recursive function that sums an integer
@@ -92,8 +93,8 @@ list. (What's a sensible return value for the empty list?)
 
 let rec sum (lst : int list) : int =
   match lst with
-  [] -> 0
-  first :: last -> first + sum last ;;
+  | [] -> 0
+  | head :: tail -> head + sum tail ;;
 
 (*......................................................................
 Exercise 4: Define a recursive function that returns the maximum
