@@ -21,25 +21,24 @@ expressions below? Test your solution by uncommenting the examples
 error is generated.
 ......................................................................*)
 
-(*   <--- remove this start of comment line
 
-let exercise1a : ??? =
+let exercise1a : float * string =
   (0.1, "hi") ;;
 
-let exercise1b : ??? =
+let exercise1b : string list =
   let add_to_hello_list x = ["Hello"; x]
   in add_to_hello_list "World!";;
 
-let exercise1c : ???  =
+let exercise1c : int * float -> int  =
   fun (x, y) -> x + int_of_float y ;;
 
-let exercise1d : ??? =
+let exercise1d : int list -> bool =
   fun lst ->
     match lst with
     | [] -> false
     | hd :: _ -> hd < hd + 1 ;;
 
-let exercise1e : ??? =
+let exercise1e : bool -> bool list =
   fun x -> if x then [x] else [] ;;
 
 remove this end of comment line too ----> *)
@@ -80,18 +79,22 @@ comprehensive. You may want to add some tests for other functions in
 the lab to get some practice with automated unit testing.
 ......................................................................*)
 
-let square_all (lst : int list) : int list =
-  failwith "square_all not implemented" ;;
+let rec square_all (lst : int list) : int list =
+  match lst with
+  [] -> []
+  first :: last -> (first * last) :: ( square_all last) ;;
 
-let exercise2 = [] ;;
+let exercise2 = square_all [3; 4; 5] ;;
 
 (*......................................................................
 Exercise 3: Define a recursive function that sums an integer
 list. (What's a sensible return value for the empty list?)
 ......................................................................*)
 
-let sum (lst : int list) : int =
-  failwith "sum not implemented" ;;
+let rec sum (lst : int list) : int =
+  match lst with
+  [] -> 0
+  first :: last -> first + sum last ;;
 
 (*......................................................................
 Exercise 4: Define a recursive function that returns the maximum
