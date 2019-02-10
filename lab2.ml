@@ -77,7 +77,7 @@ understanding how the testing function works and why these tests are
 comprehensive. You may want to add some tests for other functions in
 the lab to get some practice with automated unit testing.
 ......................................................................*)
-
+(*
 let rec square_all (lst : int list) : int list =
   match lst with
   | [] -> []
@@ -85,7 +85,7 @@ let rec square_all (lst : int list) : int list =
 
 let exercise2 =
   square_all [3; 4; 5] ;;
-
+*)
 (*......................................................................
 Exercise 3: Define a recursive function that sums an integer
 list. (What's a sensible return value for the empty list?)
@@ -103,8 +103,13 @@ list. You may be warned by the compiler that "this pattern-matching is
 not exhaustive." You may ignore this warning for this lab.
 ......................................................................*)
 
-let max_list (lst : int list) : int =
-  failwith "max_list not implemented" ;;
+let rec max_list (lst : int list) : int =
+  match lst with
+  | [] -> raise (Invalid_argument "max_list: empty list")
+  | [elt] -> elt
+  | head :: tail ->
+     let max_tail = max_list tail in
+     if head > max_tail then head else max_tail ;;
 
 (*......................................................................
 Exercise 5: Define a function zip, that takes two int lists and
@@ -123,8 +128,10 @@ length lists, to just pad the shorter list with, say, false values, so
 that, zip [1] [2; 3; 4] = [(1, 2); (false, 3); (false, 4)]?
 ......................................................................*)
 
-let zip (x : int list) (y : int list) : (int * int) list =
-  failwith "zip not implemented" ;;
+let rec zip (x : int list) (y : int list) : (int * int) list =
+  match x, y with
+  | [], [] -> []
+  | xhd :: xtl, yhd :: ytl -> (xhd, yhd) :: (zip xtl ytl) ;;
 
 (*......................................................................
 Exercise 6: Recall from Chapter 7 the definition of the function prods
@@ -154,8 +161,8 @@ let rec prods (lst : (int * int) list) : int list =
   | [] -> []
   | (x, y) :: tail -> (x * y) :: (prods tail) ;;
 
-let dotprod (a : int list) (b : int list) : int =
-  failwith "dotprod not implemented" ;;
+let dotprod (a : int list) (b : int list) : int = 
+  sum (prods (zip a b)) ;;
 
 (*======================================================================
 Part 3: High-order functional programming with map, filter, and fold
