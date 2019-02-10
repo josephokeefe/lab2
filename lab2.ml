@@ -41,7 +41,6 @@ let exercise1d : int list -> bool =
 let exercise1e : bool -> bool list =
   fun x -> if x then [x] else [] ;;
 
-remove this end of comment line too ----> *)
 
 (*======================================================================
 Part 2: First-order functional programming with lists
