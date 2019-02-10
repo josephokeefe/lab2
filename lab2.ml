@@ -81,7 +81,7 @@ the lab to get some practice with automated unit testing.
 let rec square_all (lst : int list) : int list =
   match lst with
   [] -> []
-  first :: last -> (first * last) :: ( square_all last) ;;
+  first :: last -> (first * first) :: ( square_all last) ;;
 
 let exercise2 = square_all [3; 4; 5] ;;
 
